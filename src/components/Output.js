@@ -1,9 +1,9 @@
 import React from 'react'
-
-export default function Output() {
+import marked from 'marked'
+export default function Output(props) {
     return (
         <div>
-            <p>{this.props.output}</p>
+            <p id="preview" dangerouslySetInnerHTML={{__html: marked(props.preview)}}></p>
         </div>
     )
 }
