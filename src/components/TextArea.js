@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import Output from './Output'
 import marked from "marked";
+import '../App.css';
 // import Output from './Output'
 
 marked.setOptions({breaks: true})
 
 let placeholder = `
+
 # Welcome to my React Markdown Previewer!
 
-## This is a sub-heading...
-### And here's some other cool stuff:
-  
-Heres some code, \`<div></div>\`, between 2 backticks.
+## This is an h2 heading!
+### This is an h3 heading!
+
+\`<body><h1>This is code inside backticks</h1></body> \`
 
 \`\`\`
 // this is multi-line code:
@@ -23,34 +25,27 @@ function anotherExample(firstLine, lastLine) {
 }
 \`\`\`
   
-You can also make text **bold**... whoa!
+We got **bold**...
 Or _italic_.
-Or... wait for it... **_both!_**
-And feel free to go crazy ~~crossing stuff out~~.
+Or **_both!_**
+I can ~~cross you like kobe~~.
 
-There's also [links](https://www.freecodecamp.com), and
-> Block Quotes!
+Check out the repo on [github](https://github.com/WalkerLauryGit)
+> Block Quotes like kobe!
 
-And if you want to get really crazy, even tables:
-
-Wild Header | Crazy Header | Another Header?
------------- | ------------- | ------------- 
-Your content can | be here, and it | can be here....
-And here. | Okay. | I think we get it.
-
-- And of course there are lists.
+- I love lists.
   - Some are bulleted.
-     - With different indentation levels.
-        - That look like this.
+     - Some not so much.
+        - But this list for sure is bulleted.
 
+1. Numbered Lists.
+2. All my homies love numbered lists 
+3. But the list goes on... like the love for my homies
 
-1. And there are numbererd lists too.
-1. Use just 1s if you want! 
-1. But the list goes on...
-- Even if you use dashes or asterisks.
-* And last but not least, let's not forget embedded images:
+* We can see stuff too:
 
-![React Logo w/ Text](https://goo.gl/Umyytc)
+![React Logo w/ Text](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png)
+
 `;
 
 export default class TextArea extends Component {
@@ -69,8 +64,8 @@ export default class TextArea extends Component {
 
     render() {
         return (
-            <div>
-                <textarea placeholder="Enter your marked down here" value={this.state.preview} id="editor" onChange={this.handleChange.bind(this)} />
+            <div className="container">
+                <textarea rows="25" placeholder="Enter your marked down here" value={this.state.preview} id="editor" onChange={this.handleChange.bind(this)} />
                 <br/>
                 <Output preview={this.state.preview}/>
             </div>
